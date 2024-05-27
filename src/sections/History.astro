@@ -61,11 +61,29 @@
     
 </style>
 <script>
-    document.querySelector('.btn-enviar').addEventListener('click', (event) => {
-      event.preventDefault();
-      const targetId = event.target.getAttribute('href');
-      const targetElement = document.querySelector(targetId);
-      targetElement.scrollIntoView({ behavior: 'smooth' });
-    });
-  </script>
+  document.querySelector('.btn-enviar')?.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    const target = event.target as HTMLElement | null;
+    if (!target) {
+      console.error('El target del evento es null');
+      return;
+    }
+
+    const targetId = target.getAttribute('href');
+    if (!targetId) {
+      console.error('El atributo href del target es null');
+      return;
+    }
+
+    const targetElement = document.querySelector(targetId);
+    if (!targetElement) {
+      console.error(`No se encontró el elemento con el id: ${targetId}`);
+      return;
+    }
+
+    targetElement.scrollIntoView({ behavior: 'smooth' });
+  });
+</script>
+
   
