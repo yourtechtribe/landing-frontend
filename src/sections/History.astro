@@ -1,0 +1,71 @@
+---
+
+---
+<section class="history-section flex flex-col lg:flex-row w-screen items-center justify-center gap-x-12 px-40 pb-20 ">
+    <img src="./public/jordi.png" alt="esquema" class=" esquema w-90 h-auto z-10 rounded-full">
+    <div class='historia flex flex-col items-center  justify-center'>
+        <p  class='z-10'>¡Hola! Soy Jordi. Después de más de 15 años solucionando problemas de los equipos de 
+          Finanzas con tecnología en distintos tamaños y sectores, me lanzo a la aventura de 
+          crear <strong>M.IA; una revolución para Finanzas</strong>. M.IA es un asistente que te permitirá centrarte en lo importante: 
+          ayudar al negocio. Del resto se ocupa M.IA. nada de Excel, conciliaciones, cuadres o checklists. 
+          M.IA será tu asistente y te dará la información que necesites.</p>
+        <div class=' w-full flex items-center justify-center mt-6'>
+        <a href='#footer'
+          type="submit"
+          class="btn-enviar text-center w-96 text-white font-bold py-2 px-4 rounded-md  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+        >
+        ¡Entérate primero!
+        </a>
+        </div>
+    </div>
+    
+</section>
+<style>
+    section{
+        margin-top:-150px;
+        background-color:#fff;
+    }
+    p{
+        color:#4A4A4A;
+        font-size:26px
+    }
+    .historia{
+        width:70%
+    }
+    .btn-enviar{
+      background-color:#204D74;
+    }
+    .btn-enviar:hover{
+      background-color:#1B3E5C;
+    }
+    @media(max-width:1010px){
+        .historia{
+            width:100vw;
+            padding-left:40px;
+            padding-right:40px;  
+            margin-top:30px
+        }
+    }
+
+    @media(max-width:813px){
+      section{
+        margin-top:-120px;
+        background-color:#fff;
+    }
+    }
+  
+
+    
+    
+ 
+    
+</style>
+<script>
+    document.querySelector('.btn-enviar').addEventListener('click', (event) => {
+      event.preventDefault();
+      const targetId = event.target.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+  

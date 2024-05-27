@@ -1,0 +1,99 @@
+---
+
+---
+<section class="section-container flex items-center px-10 py-10 gap-x-10 justify-around text-white ">
+    <aside class='flex flex-col items-center justify-center gap-y-10'>
+        <img src="./public/esquemaMIA2.png" alt="esquema" class=" esquema w-90 h-auto rounded-lg">
+    </aside>
+        <ul class="faq-list ">
+            <h2 class='text-start font-bold text-white mb-6'>¿Cómo puede ayudarte M.IA?</h2 >
+
+            <li >
+                <span class="question">Automatización completa</span>
+                <span class="answer">“M.IA automatiza la gestión de tesorería, permitiéndote ahorrar tiempo y reducir el riesgo de errores”</span>
+            </li>
+            <li>
+                <span class="question">Reducción de costes operativos</span>
+                <span class="answer">“M.IA identifica y elimina gastos innecesarios, ayudándote a mantener tus costes bajo control”</span>
+            </li>
+            <li>
+                <span class="question">Previsiones financieras precisas</span>
+                <span class="answer">“Sin datos precisos y actualizados, planificar el futuro se convierte en un juego de adivinanzas”</span>
+            </li>
+            <li>
+                <span class="question">Control de costes insuficientes</span>
+                <span class="answer">“M.IA analiza y responde a cualquier pregunta de forma detallada y precisa en tiempo real”</span>
+            </li>       
+        </ul>
+       
+</section>
+<style>
+    h2{
+        font-size:60px;
+        line-height:1.2;
+
+    }
+     section{
+        width:100vw;
+        background-color:#204d74;
+        height:auto;
+    }
+    .faq-list {
+        list-style-type: none;
+        margin: 0;
+    }
+    .faq-list li {
+        margin-bottom: 20px;
+    }
+    .question {
+        font-weight: bold;
+        font-size: 32px;
+    }
+    .answer {
+        font-size: 26px;
+        }
+
+    li{
+        display:flex;
+        flex-direction:column;
+
+    }
+   
+    @media(max-width:1270px){
+        h2{
+            text-align:center;
+            width:85vw;
+            padding-left:0px;
+            padding-right:0px;
+        }
+       
+        section{
+            flex-direction:column-reverse;
+            align-items:center;
+            justify-content:center;
+            height:auto;
+        }
+        ul{
+            padding-top:20px;
+            width:100%;
+            padding-left:20px;
+            padding-right:20px;
+        }
+        aside{
+            width:100%;
+            padding-left:40px;
+            padding-right:20px;
+            justify-content:center;
+            align-items:center;
+            
+        }
+        .question {
+        font-weight: bold;
+        text-align:center;
+         }
+        .answer {
+            text-align:center;
+          }
+        
+    }
+</style>
