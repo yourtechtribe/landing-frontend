@@ -2,7 +2,7 @@
 
 ---
 <section class="history-section flex flex-col lg:flex-row w-screen items-center justify-center gap-x-12 px-40 pb-20 ">
-    <img src="jordi.png" alt="CEO" class=" esquema w-90 h-auto z-10 rounded-full">
+    <img src="jordi.png" alt="CEO" class=" esquema w-90 h-auto z-20 rounded-full">
     <div class='historia flex flex-col items-center  justify-center'>
         <p  class='z-10'>¡Hola! Soy Jordi. Después de más de 15 años solucionando problemas de los equipos de 
           Finanzas con tecnología en distintos tamaños y sectores, me lanzo a la aventura de 
@@ -21,8 +21,13 @@
     
 </section>
 <style>
+  .esquema {
+    width: 90%;
+    max-width: 200px;
+    min-width: 100px; /* Establecer un tamaño mínimo para la imagen */
+}
     section{
-        margin-top:-150px;
+        margin-top:-100px;
         background-color:#fff;
     }
     p{
@@ -43,18 +48,18 @@
             width:100vw;
             padding-left:40px;
             padding-right:40px;  
-            margin-top:30px
+            margin-top:40px
         }
     }
 
     @media(max-width:813px){
       section{
-        margin-top:-120px;
+        margin-top:-90px;
         background-color:#fff;
+        width:100%;
+
     }
-    .esquema{
-         width:100%
-    }
+  
     }
   
 
