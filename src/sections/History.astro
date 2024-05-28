@@ -10,12 +10,7 @@
           ayudar al negocio. Del resto se ocupa M.IA. nada de Excel, conciliaciones, cuadres o checklists. 
           M.IA será tu asistente y te dará la información que necesites.</p>
         <div class=' w-full flex items-center justify-center mt-6'>
-        <a href='#footer'
-          type="submit"
-          class="btn-enviar text-center w-96 text-white font-bold py-2 px-4 rounded-md  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-        >
-        ¡Entérate primero!
-        </a>
+        
         </div>
     </div>
     
@@ -37,12 +32,7 @@
     .historia{
         width:70%
     }
-    .btn-enviar{
-      background-color:#204D74;
-    }
-    .btn-enviar:hover{
-      background-color:#1B3E5C;
-    }
+   
     @media(max-width:1010px){
         .historia{
             width:100vw;
@@ -67,36 +57,20 @@
       }
   
     }
+    @media (max-width:1574px){
+      section{
+        margin-top:40px
+      }
+
+    }
+
+   
 
     
     
  
     
 </style>
-<script>
-  document.querySelector('.btn-enviar')?.addEventListener('click', (event) => {
-    event.preventDefault();
 
-    const target = event.target as HTMLElement | null;
-    if (!target) {
-      console.error('El target del evento es null');
-      return;
-    }
-
-    const targetId = target.getAttribute('href');
-    if (!targetId) {
-      console.error('El atributo href del target es null');
-      return;
-    }
-
-    const targetElement = document.querySelector(targetId);
-    if (!targetElement) {
-      console.error(`No se encontró el elemento con el id: ${targetId}`);
-      return;
-    }
-
-    targetElement.scrollIntoView({ behavior: 'smooth' });
-  });
-</script>
 
   
