@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import axios from 'axios';
 import './Form.css';
+import {  collection, addDoc } from 'firebase/firestore';
+import db from '../../firestoreconfig';
+
+// Obtén una instancia de Firestore
 
 export default function Form() {
     const [responseMessage, setResponseMessage] = useState("");
@@ -11,19 +15,19 @@ export default function Form() {
         e.preventDefault();
 
         try {
-            const response = await axios.post("http://localhost:3050/submit", { mail });
-            console.log(response.data.data.message)
-            if (response.data.message) {
-                setResponseMessage(response.data.data.message);
-            }
+            const docRef = await addDoc(collection(db, "emails"), {
+              email: email,
+              timestamp: new Date()
+            });
             setSucces(true)
             setTimeout(()=>{
                 setSucces(false)
             },5000)
-           
-        } catch (error) {
-            console.error("Error al enviar el formulario:", error);
-        }
+            
+          } catch (error) {
+            console.error("Error al enviar el correo electrónico:", error);
+            return false;
+          }
     }
 
     return (
