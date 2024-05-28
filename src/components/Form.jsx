@@ -16,7 +16,7 @@ export default function Form() {
 
         try {
             const docRef = await addDoc(collection(db, "emails"), {
-              email: email,
+              email: mail,
               timestamp: new Date()
             });
             setSucces(true)
