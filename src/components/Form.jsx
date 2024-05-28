@@ -15,9 +15,8 @@ export default function Form() {
         e.preventDefault();
 
         try {
-            const docRef = await addDoc(collection(db, "emails"), {
+            const docRef = await addDoc(collection(db, "mails"), {
               email: mail,
-              timestamp: new Date()
             });
             setSucces(true)
             setTimeout(()=>{
