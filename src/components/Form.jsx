@@ -27,7 +27,7 @@ export default function Form() {
     }
 
     return (
-        <div className='flex flex-col items-center justify-center'>
+        <div id='footer' className='flex flex-col items-center justify-center'>
         <form 
         onSubmit={submit} 
         className="wrapp-formulario w-96  bg-white p-10 rounded-lg shadow-md"

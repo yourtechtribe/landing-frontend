@@ -2,7 +2,7 @@
 import {Icon} from 'astro-icon/components'
 import Form from '../components/Form.jsx'
 ---
-<section id='footer' class="flex items-start px-20 justify-around text-black  ">
+<section  class="flex items-start px-20 justify-around text-black  ">
     <header class='w-2/4  flex flex-col header'>
         <h2 class='text-start w-full'>Empieza ahora</h2>
         <p class='mt-4 textoIntro'>No dejes que la gestión financiera sea una carga. Con M.IA, puedes simplificar tus procesos, ahorrar tiempo y dinero, y tomar decisiones estratégicas con confianza. 
@@ -107,6 +107,23 @@ import Form from '../components/Form.jsx'
         } 
 
   }
+
+  @media(max-width:405px){
+    section{
+      padding-top:0px;
+    }
+        h2{
+            font-size:26px;
+           
+        }
+        .textoIntro{
+          font-size:20px;
+        }
+        .header{
+          margin-bottom:0px;
+        }
+      
+    }
 
     
 	
