@@ -1,0 +1,35 @@
+name: SonarCloud analysis
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  pull-requests: read # permite que SonarCloud decore los PRs con resultados del análisis
+
+jobs:
+  Analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js (if needed)
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm install # Ajusta según el gestor de dependencias usado (npm/yarn/pnpm)
+
+      - name: Analyze with SonarCloud
+        uses: SonarSource/sonarcloud-github-action@4006f663ecaf1f8093e8e4abb9227f6041f52216
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=autoversion-node # Reemplaza con tu clave de proyecto
+            -Dsonar.organization=mysecretsonarkey # Reemplaza con tu organización
+            -Dsonar.qualitygate.wait=true # Falla si no pasa la puerta de calidad
