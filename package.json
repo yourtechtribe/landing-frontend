@@ -33,6 +33,6 @@
   },
   "jest": {
     "coverageDirectory": "./coverage",
-    "coverageReporters": ["lcov", "text-summary"]
+    "coverageReporters": ["lcov", "text-summary","json"]
   }
 }
