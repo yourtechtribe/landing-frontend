@@ -33,3 +33,5 @@ jobs:
             -Dsonar.projectKey=autoversion-node
             -Dsonar.organization="Jordi Salazar badia" # Usa el nombre exacto de tu organización
             -Dsonar.qualitygate.wait=true
+            -Dsonar.branch.name=main # Asegúrate de que la rama esté configurada correctamente
+
