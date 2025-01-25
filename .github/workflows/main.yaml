@@ -48,6 +48,15 @@ jobs:
       - name: Install SonarQube Scanner
         run: npm install -g sonar-scanner
 
+      - name: Run tests and generate coverage
+        run: |
+             npm install -g jest
+             jest --coverage --coverageReporters=lcov
+             env:
+        env: 
+            CI: true
+ 
+
       - name: Run SonarQube Analysis
         run: |
           sonar-scanner \
