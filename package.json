@@ -24,7 +24,7 @@
     "repositoryUrl": "https://github.com/J-hu960/autoversion-node",
 
     "branches": [
-      "release"
+      "main"
     ],
     "plugins": [
       "@semantic-release/commit-analyzer",
