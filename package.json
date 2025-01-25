@@ -21,6 +21,8 @@
     "supertest": "^7.0.0"
   },
   "release": {
+    "repositoryUrl": "https://github.com/J-hu960/autoversion-node",
+
     "branches": [
       "release"
     ],
