@@ -30,6 +30,6 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.projectKey=autoversion-node # Reemplaza con tu clave de proyecto
-            -Dsonar.organization=mysecretsonarkey # Reemplaza con tu organización
-            -Dsonar.qualitygate.wait=true # Falla si no pasa la puerta de calidad
+            -Dsonar.projectKey=autoversion-node
+            -Dsonar.organization="Jordi Salazar badia" # Usa el nombre exacto de tu organización
+            -Dsonar.qualitygate.wait=true
