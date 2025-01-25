@@ -26,4 +26,4 @@ jobs:
         run: |
           npx semantic-release
         env:
-          GITHUB_TOKEN: ${{ github.MY_CUSTOM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
