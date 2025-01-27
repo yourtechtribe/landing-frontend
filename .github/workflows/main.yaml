@@ -4,6 +4,15 @@ on:
   push:
     branches:
       - main
+env:
+  PROJECT_ID: 'autoversion'
+  REGION: 'europe-southwest1'
+  SERVICE: 'mia-cocohomes-backend'
+  WORKLOAD_IDENTITY_PROVIDER: 'projects/525373923741/locations/global/workloadIdentityPools/github-workload/providers/github-actions'
+  SERVICE_ACCOUNT: 'mia-sandboxv1@ytt-mia.iam.gserviceaccount.com'
+  ARTIFACT_REGISTRY_LOCATION: 'europe-southwest1-docker.pkg.dev'
+  ARTIFACT_REGISTRY_REPO: 'cloud-run-source-deploy'
+
 
 permissions:
   contents: write
@@ -84,3 +93,43 @@ jobs:
         run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  deploy:
+    runs-on: 'ubuntu-latest'
+
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    steps:
+      # Checkout the code
+      - name: 'Checkout code'
+        uses: 'actions/checkout@v4'
+
+      # Authenticate to Google Cloud
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: '${{ env.WORKLOAD_IDENTITY_PROVIDER }}'
+          service_account: '${{ env.SERVICE_ACCOUNT }}'
+
+      - name: 'Configure Docker for Artifact Registry'
+        run: |
+          gcloud auth configure-docker ${{env.REGION}}-docker.pkg.dev
+
+      - name: 'Build and Push cocohomes Backend Image'
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: '${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/cloud-run-source-deploy/${{ env.SERVICE }}:${{ github.sha }}'
+
+      # Deploy to Cloud Run
+      - name: 'Deploy Backend to Cloud Run'
+        uses: 'google-github-actions/deploy-cloudrun@v2'
+        with:
+          service: '${{ env.SERVICE }}'
+          region: '${{ env.REGION }}'
+          image: '${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/cloud-run-source-deploy/${{ env.SERVICE }}:${{ github.sha }}'
+          env_vars: |
+            ENVIRONMENT=pro
