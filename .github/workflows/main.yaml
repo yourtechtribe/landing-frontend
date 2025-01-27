@@ -3,7 +3,7 @@ name: CI/CD Workflow
 on:
   push:
     branches:
-      - main
+      - release
 env:
   PROJECT_ID: 'autoversion'
   REGION: 'europe-southwest1'
