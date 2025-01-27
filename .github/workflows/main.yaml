@@ -5,7 +5,7 @@ on:
     branches:
       - release
 env:
-  PROJECT_ID: 'autoversion'
+  PROJECT_ID: 'ytt-mia'
   REGION: 'europe-southwest1'
   SERVICE: 'mia-cocohomes-backend'
   WORKLOAD_IDENTITY_PROVIDER: 'projects/525373923741/locations/global/workloadIdentityPools/github-workload/providers/github-actions'
