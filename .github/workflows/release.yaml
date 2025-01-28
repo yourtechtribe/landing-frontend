@@ -95,13 +95,12 @@ jobs:
     - name: Run semantic release
       id: semantic_release
       run: |
-       export VERSION=$(npx semantic-release --dry-run | grep 'The next release version is' | sed -E 's/.* ([[:digit:].]+)$/\1/')
-       if [ -z "$VERSION" ]; then
-        echo "Failed to determine version" >&2
-        exit 1
-       fi
-       echo "version=${VERSION}-${GITHUB_SHA::12}" >> $GITHUB_OUTPUT
-
+        export VERSION=$(npx semantic-release --dry-run | grep 'The next release version is' | sed -E 's/.* ([[:digit:].]+)$/\1/')
+        if [ -z "$VERSION" ]; then
+          echo "Failed to determine version" >&2
+          exit 1
+        fi
+        echo "version=${VERSION}-${GITHUB_SHA::12}" >> $GITHUB_OUTPUT
 
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -114,7 +113,6 @@ jobs:
 
     - name: view generated version
       run: echo "version=${{ steps.semantic_release.outputs.version }}"
-  
 
   deploy:
    runs-on: ubuntu-latest
