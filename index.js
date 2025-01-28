@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+
+// Usa el puerto definido en la variable de entorno PORT o el 8080 por defecto
+const port = process.env.PORT || 8080;
 
 // Route: GET /
 app.get('/', (req, res) => {
@@ -8,7 +10,7 @@ app.get('/', (req, res) => {
 });
 
 // Start server
-if (require.main == module) {
+if (require.main === module) {
   app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
   });
