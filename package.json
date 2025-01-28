@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "jest"
   },
   "keywords": [],
@@ -13,7 +14,26 @@
     "express": "^4.21.2"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/git": "^10.0.1",
     "jest": "^29.7.0",
+    "semantic-release": "^24.2.1",
     "supertest": "^7.0.0"
+  },
+  "release": {
+    "repositoryUrl": "https://github.com/J-hu960/autoversion-node",
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/changelog",
+      "@semantic-release/git"
+    ]
+  },
+  "jest": {
+    "coverageDirectory": "./coverage",
+    "coverageReporters": ["lcov", "text-summary","json"]
   }
 }
