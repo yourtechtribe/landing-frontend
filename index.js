@@ -6,7 +6,7 @@ const port = process.env.PORT || 8080;
 
 // Route: GET /
 app.get('/', (req, res) => {
-  res.send('Hello World');
+  res.send('Goodbye cruel world:((');
 });
 
 // Start server
