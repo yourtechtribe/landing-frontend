@@ -6,9 +6,9 @@ const port = process.env.PORT || 8080;
 
 // Route: GET /
 app.get('/', (req, res) => {
-  res.send('Goodbye cruel world:((');
+  res.send('Hello World');
 });
-
+ 
 // Start server
 if (require.main === module) {
   app.listen(port, () => {
