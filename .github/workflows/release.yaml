@@ -7,9 +7,9 @@ on:
       - release
 
 env:
-  PROJECT_ID: 'autoversion-mdas'
+  PROJECT_ID: 'ytt-mia'
   REGION: 'europe-southwest1'
-  SERVICE: 'mia-cocohomes-backend'
+  SERVICE: 'autoversion-mdas'
   WORKLOAD_IDENTITY_PROVIDER: 'projects/525373923741/locations/global/workloadIdentityPools/github-workload/providers/github-actions'
   SERVICE_ACCOUNT: 'mia-sandboxv1@ytt-mia.iam.gserviceaccount.com'
   ARTIFACT_REGISTRY_LOCATION: 'europe-southwest1-docker.pkg.dev'
