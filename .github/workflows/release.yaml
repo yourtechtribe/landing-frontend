@@ -1,14 +1,15 @@
 name: CI/CD Workflow
 
+#esperar a tenir permisos per yourtechtribe
 on:
   push:
     branches:
       - release
 
 env:
-  PROJECT_ID: 'ytt-mia'
+  PROJECT_ID: 'autoversion-mdas'
   REGION: 'europe-southwest1'
-  SERVICE: 'autoversion-node'
+  SERVICE: 'mia-cocohomes-backend'
   WORKLOAD_IDENTITY_PROVIDER: 'projects/525373923741/locations/global/workloadIdentityPools/github-workload/providers/github-actions'
   SERVICE_ACCOUNT: 'mia-sandboxv1@ytt-mia.iam.gserviceaccount.com'
   ARTIFACT_REGISTRY_LOCATION: 'europe-southwest1-docker.pkg.dev'
