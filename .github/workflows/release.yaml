@@ -10,7 +10,7 @@ env:
   REGION: 'europe-southwest1'
   SERVICE: 'autoversion-node'
   WORKLOAD_IDENTITY_PROVIDER: 'projects/525373923741/locations/global/workloadIdentityPools/github-workload/providers/github-actions'
-  SERVICE_ACCOUNT: ' 525373923741-compute@developer.gserviceaccount.com'
+  SERVICE_ACCOUNT: 'mia-sandboxv1@ytt-mia.iam.gserviceaccount.com'
   ARTIFACT_REGISTRY_LOCATION: 'europe-southwest1-docker.pkg.dev'
   ARTIFACT_REGISTRY_REPO: 'cloud-run-source-deploy'
 
