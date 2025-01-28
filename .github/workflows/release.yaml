@@ -65,7 +65,7 @@ jobs:
 
       - name: Run SonarQube Analysis
         run: |
-          sonar-scanner -X \
+          sonar-scanner \
             -Dsonar.projectKey=J-hu960_autoversion-node \
             -Dsonar.organization=mysecretsonarkey \
             -Dsonar.host.url=https://sonarcloud.io \
