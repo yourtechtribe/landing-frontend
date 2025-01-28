@@ -89,15 +89,16 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run Semantic Release
-        id: semantic_release
-        run: npx semantic-release
+      - name: Run semantic release
+        id: set_version
+        run: |
+          version=$(npx semantic-release --dry-run | grep 'The next release version is' | awk '{print $NF}')
+          echo "::set-output name=version::$version"
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Extract Release Tag
-        id: extract_tag
-        run: echo "new_release=${{ steps.semantic_release.outputs.version }}" >> $GITHUB_ENV
+    
 
   deploy:
     runs-on: ubuntu-latest
@@ -125,13 +126,13 @@ jobs:
         with:
           context: .
           push: true
-          tags: '${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/cloud-run-source-deploy/${{ env.SERVICE }}:${{ env.new_release }}'
+          tags: '${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/cloud-run-source-deploy/${{ env.SERVICE }}:${{ needs.semantic_release.outputs.version }}'
 
       - name: Deploy Backend to Cloud Run
         uses: google-github-actions/deploy-cloudrun@v2
         with:
           service: '${{ env.SERVICE }}'
           region: '${{ env.REGION }}'
-          image: '${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/cloud-run-source-deploy/${{ env.SERVICE }}:${{ env.new_release }}'
+          image: '${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/cloud-run-source-deploy/${{ env.SERVICE }}:${{  needs.semantic_release.outputs.version }}'
           env_vars: |
             ENVIRONMENT=pro
