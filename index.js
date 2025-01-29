@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
 // Start server
 if (require.main === module) {
   app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`);
+    console.log(`Servere is running at http://localhost:${port}`);
   });
 }
 
