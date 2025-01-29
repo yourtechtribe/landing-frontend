@@ -10,7 +10,7 @@ env:
   PROJECT_ID: ${{secrets.GPC_PROJECT_ID}}
   REGION: 'europe-southwest1'
   SERVICE: ${{secrets.GPC_PROJECT_SERCICE}}
-  WORKLOAD_IDENTITY_PROVIDER: ${{secrets.GPC_WORKLOAD_IDENTITY_PROVIDER}}
+  WORKLOAD_IDENTITY_PROVIDER: 'projects/525373923741/locations/global/workloadIdentityPools/github-workload/providers/github-actions'
   SERVICE_ACCOUNT: ${{secrets.GPC_SERVICE_ACCOUNT}}
   ARTIFACT_REGISTRY_LOCATION: ${{secrets.GPC_ARTIFACT_REGISTRY_LOCATION}}
   ARTIFACT_REGISTRY_REPO: ${{secrets.GPC_ARTIFACT_REGISTRY_REPO}}
