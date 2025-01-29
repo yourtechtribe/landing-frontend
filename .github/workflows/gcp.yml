@@ -28,6 +28,12 @@ jobs:
         node-version: [20.x]
 
     steps:
+      - name: Check for Empty Values
+        run: |
+          if [ -z "${{ env.REGION }}" ] || [ -z "${{ env.PROJECT_ID }}" ] || [ -z "${{ env.ARTIFACT_REGISTRY_REPO }}" ] || [ -z "${{ env.SERVICE }}" ]; then
+          echo "One or more environment variables are empty!"
+          exit 1
+          fi
       - name: Checkout code
         uses: actions/checkout@v4
 
