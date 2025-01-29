@@ -52,7 +52,7 @@ jobs:
           CI: true
 
   static-code-analysis:
-    name: Static Code Analysis
+    name: Static Code Analysis.
     runs-on: ubuntu-latest
     needs: build
 
