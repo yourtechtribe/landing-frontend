@@ -117,6 +117,12 @@ jobs:
     id-token: write
 
    steps:
+    - name: Debug Secrets
+      run: |
+         echo "WORKLOAD_IDENTITY_PROVIDER=${{ secrets.GPC_WORKLOAD_IDENTITY_PROVIDER }}"
+         echo "SERVICE_ACCOUNT=${{ secrets.GPC_SERVICE_ACCOUNT }}"
+         echo "PROJECT_ID=${{ secrets.GPC_PROJECT_ID }}"
+         echo "SERVICE=${{ secrets.GPC_PROJECT_SERCICE }}"
     - name: Checkout code
       uses: actions/checkout@v4
 
