@@ -34,6 +34,11 @@ jobs:
           echo "One or more environment variables are empty!"
           exit 1
           fi
+        env:
+         REGION: ${{ env.REGION }}
+         PROJECT_ID: ${{ env.PROJECT_ID }}
+         ARTIFACT_REGISTRY_REPO: ${{ env.ARTIFACT_REGISTRY_REPO }}
+         SERVICE: ${{ env.SERVICE }}
       - name: Checkout code
         uses: actions/checkout@v4
 
