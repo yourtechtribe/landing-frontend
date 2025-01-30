@@ -152,13 +152,13 @@ jobs:
       with:
         context: .
         push: true
-        tags: '${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/cloud-run-source-deploy/${{ env.SERVICE }}:${{ github.sha }}' 
+        tags: '${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/cloud-run-source-deploy/${{ env.SERVICE }}:${{ steps.semantic_release.outputs.version}}' 
 
     - name: Deploy to cloud run
       uses: google-github-actions/deploy-cloudrun@v2
       with:
         service: '${{ env.SERVICE }}'
         region: '${{ env.REGION }}'
-        image: '${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/cloud-run-source-deploy/${{ env.SERVICE }}:${{ github.sha }}' 
+        image: '${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/cloud-run-source-deploy/${{ env.SERVICE }}:${{ steps.semantic_release.outputs.version }}' 
         env_vars: |
           ENVIRONMENT=prod
