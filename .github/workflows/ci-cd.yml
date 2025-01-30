@@ -34,6 +34,7 @@ jobs:
           echo "One or more environment variables are empty!"
           exit 1
           fi
+
         env:
          REGION: ${{ env.REGION }}
          PROJECT_ID: ${{ env.PROJECT_ID }}
@@ -76,10 +77,10 @@ jobs:
       - name: Run SonarQube Analysis
         run: |
           sonar-scanner \
-            -Dsonar.projectKey=J-hu960_autoversion-node \
-            -Dsonar.organization=mysecretsonarkey \
+            -Dsonar.projectKey=${{secrets.SONAR_PROJECTID}} \
+            -Dsonar.organization=${{secrets.SONAR_ORG}} \
             -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.login=07612ba44f74ac2a316f33016d01d1a5038605f3 \
+            -Dsonar.login=${{secrets.SONAR_LOGIN}} \
             -Dsonar.qualitygate.wait=true \
 
   release:
@@ -145,18 +146,18 @@ jobs:
     - name: Configure Docker for Artifact Registry
       run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev
 
-    - name: Build and Push cocohomes Backend Image
+    - name: Build and Push Image
       uses: docker/build-push-action@v6
       with:
         context: .
         push: true
-        tags: '${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/cloud-run-source-deploy/${{ env.SERVICE }}:${{ github.sha }}'  # Usamos la salida `version`
+        tags: '${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/cloud-run-source-deploy/${{ env.SERVICE }}:${{ github.sha }}' 
 
-    - name: Deploy Backend to Cloud Run
+    - name: Deploy to cloud run
       uses: google-github-actions/deploy-cloudrun@v2
       with:
         service: '${{ env.SERVICE }}'
         region: '${{ env.REGION }}'
-        image: '${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/cloud-run-source-deploy/${{ env.SERVICE }}:${{ github.sha }}'  # Usamos la salida `version`
+        image: '${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/cloud-run-source-deploy/${{ env.SERVICE }}:${{ github.sha }}' 
         env_vars: |
           ENVIRONMENT=prod
