@@ -1,6 +1,5 @@
 name: CI/CD Workflow
 
-#esperar a tenir permisos per yourtechtribe
 on:
   push:
     branches:
