@@ -1,0 +1,6 @@
+git commit -m"feat(core): migrate to version 2.0.0  
+
+BREAKING CHANGE: Introduced major updates to the project structure and functionality.  
+- Refactored core modules to improve scalability and maintainability.  
+- Updated APIs to align with the latest standards.
+- Deprecated legacy features no longer supported."       
